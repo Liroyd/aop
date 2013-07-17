@@ -9,14 +9,22 @@
     <aop:config>
 
         <aop:pointcut id="webPointCut"
+                      expression="execution(* com.aop.web.example.WebClassA.webMethodA())"/>
+
+        <aop:pointcut id="appPointCut"
                       expression="execution(* com.aop.example.ClassA.methodA())"/>
 
         <aop:aspect id="webLogAspect" ref="webAspectA" >
-            <aop:after pointcut-ref="webPointCut" method="logA"/>
+            <aop:after pointcut-ref="webPointCut" method="webLogAfterMethodA"/>
+        </aop:aspect>
+
+        <aop:aspect id="appLogAspect" ref="appAspectA" >
+            <aop:after pointcut-ref="appPointCut" method="logA"/>
         </aop:aspect>
 
     </aop:config>
 
-    <bean id="webAspectA" class="com.aop.example.log.AspectA"/>
+    <bean id="webAspectA" class="com.aop.web.example.log.WebAspectA"/>
+    <bean id="appAspectA" class="com.aop.example.log.AspectA"/>
 
 </beans>

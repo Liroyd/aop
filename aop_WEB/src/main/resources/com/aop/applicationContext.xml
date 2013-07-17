@@ -3,11 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+    <bean id="classA" class="com.aop.example.ClassA"/>
     <bean id="webClassA" class="com.aop.web.example.WebClassA"/>
 
     <bean class="com.aop.Executor" id="executor">
         <property name="webClassA" ref="webClassA"/>
+        <property name="classA" ref="classA"/>
     </bean>
 
 </beans>

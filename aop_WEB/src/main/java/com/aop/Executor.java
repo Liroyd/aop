@@ -1,16 +1,14 @@
 package com.aop;
 
 import com.aop.example.ClassA;
-
 import com.aop.web.example.WebClassA;
-import com.configurablefactory.ConfigurableFactory;
 
 public class Executor {
 
     WebClassA webClassA;
+    ClassA classA;
 
     public void execute() {
-        ClassA classA = ConfigurableFactory.getInstance().getBeanFactory().getBean("classA", ClassA.class);
         classA.methodA();
 
         System.out.println("\n\n");
@@ -20,5 +18,9 @@ public class Executor {
 
     public void setWebClassA(WebClassA webClassA) {
         this.webClassA = webClassA;
+    }
+
+    public void setClassA(ClassA classA) {
+        this.classA = classA;
     }
 }
